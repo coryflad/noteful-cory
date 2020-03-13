@@ -4,9 +4,10 @@ import { countNotesForFolder } from './notes-helpers'
 
 function NoteListNav(props) {
     return (
-        <div>
-            <p>note list nav</p>
+        <div className='noteList'>
             <ul>
+                <p>NOTE LIST NAV</p>
+                <p>Folders: </p>
                 {props.folders.map(folder =>
                     <li key={folder.id}>
                         <NavLink
@@ -25,7 +26,7 @@ function NoteListNav(props) {
                     to='./add-folder'
                     type='button'
                 >
-                    Folder
+                    Add Folder
                 </button>
             </div>
         </div>

@@ -3,8 +3,13 @@ import React from 'react'
 
 function NotePageNav(props) {
     return (
-        <div>
-            <p>note page nav</p>
+        <div className='notePageNav'>
+            <p>NOTE PAGE NAV</p>
+            {props.folder && (
+                <h3>
+                    Folder Name: {props.folder.name}
+                </h3>
+            )}
             <button
                 tag='button'
                 role='link'
@@ -12,11 +17,6 @@ function NotePageNav(props) {
             >
                 Go Back
                 </button>
-            {props.folder && (
-                <h3>
-                    {props.folder.name}
-                </h3>
-            )}
         </div>
     )
 }

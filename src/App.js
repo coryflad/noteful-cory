@@ -3,8 +3,10 @@ import { Route, Link } from 'react-router-dom'
 import './App.css';
 import NoteListNav from './NoteListNav'
 import NotePageNav from './NotePageNav'
+import NoteListMain from './NoteListMain'
+import NotePageMain from './NotePageMain'
 import dummyStore from './dummy-store'
-import { findNote, findFolder } from './notes-helpers'
+import { findNote, findFolder, getNotesForFolder } from './notes-helpers'
 
 
 class App extends React.Component {
@@ -51,21 +53,55 @@ class App extends React.Component {
     );
   }
 
+  renderMainRoutes() {
+    const { notes, folders } = this.state;
+    return (
+      <>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            render={routeProps => {
+              const { folderId } = routeProps.match.params;
+              const notesForFolder = getNotesForFolder(
+                notes,
+                folderId
+              );
+              return (
+                <NoteListMain
+                  {...routeProps}
+                  notes={notesForFolder}
+                />
+              );
+            }}
+          />
+        ))}
+        <Route
+          path="/note/:noteId"
+          render={routeProps => {
+            const { noteId } = routeProps.match.params;
+            const note = findNote(notes, noteId);
+            return <NotePageMain {...routeProps} note={note} />;
+          }}
+        />
+      </>
+    );
+  }
+
 
 
 
   render() {
     return (
-      <div>
+      <div className='app'>
         <nav>{this.renderNavRoutes()}</nav>
         <header>
           <h1>
             <Link to='/'>Noteful</Link>{' '}
           </h1>
         </header>
-        <Route>
-          <NotePageNav />
-        </Route>
+        <main>{this.renderMainRoutes()}</main>
 
       </div>
     )
