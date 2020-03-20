@@ -11,9 +11,7 @@ export default function NotePageMain(props) {
       />
       <div className='paragraph'>
         {props.note.content.split(/\n \r|\n/).map((para, i) =>
-          <p key={i}>
-            PARAGRAPH COMPONENT: 
-            {para}</p>
+          <p key={i}>PARAGRAPH COMPONENT: {para} </p>
         )}
       </div>
     </section>

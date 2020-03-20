@@ -1,4 +1,6 @@
 import React from 'react'
+import CircleButton from './CircleButton'
+import { Link } from 'react-router-dom'
 
 
 function NotePageNav(props) {
@@ -10,13 +12,13 @@ function NotePageNav(props) {
                     Folder Name: {props.folder.name}
                 </h3>
             )}
-            <button
+            <CircleButton
                 tag='button'
                 role='link'
                 onClick={() => props.history.goBack()}
             >
                 Go Back
-                </button>
+                </CircleButton>
         </div>
     )
 }

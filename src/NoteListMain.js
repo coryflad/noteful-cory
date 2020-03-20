@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Note from  './Note'
+import CircleButton from './CircleButton'
+import './CircleButton.css'
 
 export default function NoteListMain(props) {
     return (
@@ -18,12 +20,12 @@ export default function NoteListMain(props) {
                 )}
             </ul>
             <div>
-                <button
+                <CircleButton
                     tag={Link}
                     to='/add-note'
-                    type='button'>
+                    >
                     Add Note
-                 </button>
+                 </CircleButton>
             </div>
         </section>
     )
