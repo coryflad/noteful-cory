@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
 
-class NotePageNav extends React.Component {
+class AddNote extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,24 +21,24 @@ class NotePageNav extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const { name } = e.target;
-        const folder = {
-            folder_name: name.value
+        const note = {
+            note_name: name.value
         };
-        console.log(folder)
+        console.log(note)
     }
 
     render() {
         return (
-            <div className='notePageNav'>
-                <p>NOTE PAGE NAV</p>
-                {this.props.folder && (
+            <div className='addNote'>
+                <p>ADD NOTE</p>
+                {this.props.note && (
                     <h3>
-                        Folder Name: {this.props.folder.name}
+                        Note Name: {this.props.note.name}
                     </h3>
                 )}
-                <form className="addFolderForm" onSubmit={e => this.handleSubmit(e)}>
-                    <legend><h3>Add Folder</h3></legend>
-                    <label htmlFor="name"><h4>Folder Name</h4></label>
+                <form className="addNoteForm" onSubmit={e => this.handleSubmit(e)}>
+                    <legend><h3>Add Note</h3></legend>
+                    <label htmlFor="name"><h4>Note Name</h4></label>
                     <input
                         type="text"
                         name="name"
@@ -66,10 +66,10 @@ class NotePageNav extends React.Component {
 
 }
 
-NotePageNav.defaultProps = {
+AddNote.defaultProps = {
     history: {
         goBack: () => { }
     }
 }
 
-export default NotePageNav
+export default AddNote

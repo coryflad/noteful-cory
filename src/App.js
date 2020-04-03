@@ -5,6 +5,7 @@ import NoteListNav from './NoteListNav'
 import NotePageNav from './NotePageNav'
 import NoteListMain from './NoteListMain'
 import NotePageMain from './NotePageMain'
+import AddNote from  './AddNote'
 import dummyStore from './dummy-store'
 import { findNote, findFolder, getNotesForFolder } from './notes-helpers'
 
@@ -16,7 +17,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState(dummyStore), 600)
+    setTimeout(() => this.setState(dummyStore), 500)
     console.log(dummyStore)
   }
 
@@ -48,7 +49,7 @@ class App extends React.Component {
           }}
         />
         <Route path="/add-folder" component={NotePageNav} />
-        <Route path="/add-note" component={NotePageNav} />
+        <Route path="/add-note" component={AddNote} />
       </>
     );
   }
