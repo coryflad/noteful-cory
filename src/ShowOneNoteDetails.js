@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-export default function Note(props) {
+export default function ShowOneNoteDetails(props) {
   return (
     <div className='noteComponent'>
-      <p>NOTE COMPONENT</p>
+      <p>Show One Note Details</p>
       <h2>
         <Link to={`/note/${props.id}`}>
           {props.name}

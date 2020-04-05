@@ -1,9 +1,10 @@
 import React from 'react'
-import Note from './Note'
+import Note from './ShowOneNoteDetails'
 
-export default function NotePageMain(props) {
+export default function ShowOneNote(props) {
   return (
     <section>
+      <h2>SHOW ONE NOTE</h2>
       <Note
         id={props.note.id}
         name={props.note.name}
@@ -18,7 +19,7 @@ export default function NotePageMain(props) {
   )
 }
 
-NotePageMain.defaultProps = {
+ShowOneNote.defaultProps = {
   note: {
     content: '',
   }

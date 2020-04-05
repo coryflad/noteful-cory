@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
 
-class NotePageNav extends React.Component {
+class AddFolder extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -29,8 +29,8 @@ class NotePageNav extends React.Component {
 
     render() {
         return (
-            <div className='notePageNav'>
-                <p>NOTE PAGE NAV</p>
+            <div className='addFolder'>
+                <p>ADD FOLDER</p>
                 {this.props.folder && (
                     <h3>
                         Folder Name: {this.props.folder.name}
@@ -66,10 +66,10 @@ class NotePageNav extends React.Component {
 
 }
 
-NotePageNav.defaultProps = {
+AddFolder.defaultProps = {
     history: {
         goBack: () => { }
     }
 }
 
-export default NotePageNav
+export default AddFolder

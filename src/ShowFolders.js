@@ -3,11 +3,11 @@ import { Link, NavLink } from 'react-router-dom'
 import { countNotesForFolder } from './notes-helpers'
 import CircleButton from './CircleButton'
 
-function NoteListNav(props) {
+function ShowFolders(props) {
     return (
-        <div className='noteList'>
+        <div className='showFolders'>
             <ul>
-                <p>NOTE LIST NAV</p>
+                <p>SHOW FOLDERS</p>
                 <p>Folders: </p>
                 {props.folders.map(folder =>
                     <li key={folder.id}>
@@ -33,4 +33,4 @@ function NoteListNav(props) {
     )
 }
 
-export default NoteListNav
+export default ShowFolders

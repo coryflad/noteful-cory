@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Note from  './Note'
+import ShowOneNoteDetails from  './ShowOneNoteDetails'
 import CircleButton from './CircleButton'
 import './CircleButton.css'
 
-export default function NoteListMain(props) {
+export default function ShowNotes(props) {
     return (
-        <section className='noteListMain'>
+        <section className='showNotes'>
             <ul>
-                <p>NOTE LIST MAIN COMPONENT</p>
+                <p>SHOW NOTES</p>
                 {props.notes.map(note =>
                     <li key={note.id}>
-                        <Note
+                        <ShowOneNoteDetails
                             id={note.id}
                             name={note.name}
                             modified={note.modified}
@@ -31,6 +31,6 @@ export default function NoteListMain(props) {
     )
 }
 
-NoteListMain.defaultProps = {
+ShowNotes.defaultProps = {
     notes: [],
 }

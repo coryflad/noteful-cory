@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
 import './App.css';
-import NoteListNav from './NoteListNav'
-import NotePageNav from './NotePageNav'
-import NoteListMain from './NoteListMain'
-import NotePageMain from './NotePageMain'
+import ShowFolders from './ShowFolders'
+import AddFolder from './AddFolder'
+import ShowNotes from './ShowNotes'
+import ShowOneNote from './ShowOneNote'
 import AddNote from  './AddNote'
 import dummyStore from './dummy-store'
 import { findNote, findFolder, getNotesForFolder } from './notes-helpers'
@@ -31,7 +31,7 @@ class App extends React.Component {
             key={path}
             path={path}
             render={routeProps => (
-              <NoteListNav
+              <ShowFolders
                 folders={folders}
                 notes={notes}
                 {...routeProps}
@@ -45,10 +45,10 @@ class App extends React.Component {
             const { noteId } = routeProps.match.params;
             const note = findNote(notes, noteId) || {};
             const folder = findFolder(folders, note.folderId);
-            return <NotePageNav {...routeProps} folder={folder} />;
+            return <AddFolder {...routeProps} folder={folder} />;
           }}
         />
-        <Route path="/add-folder" component={NotePageNav} />
+        <Route path="/add-folder" component={AddFolder} />
         <Route path="/add-note" component={AddNote} />
       </>
     );
@@ -70,7 +70,7 @@ class App extends React.Component {
                 folderId
               );
               return (
-                <NoteListMain
+                <ShowNotes
                   {...routeProps}
                   notes={notesForFolder}
                 />
@@ -83,7 +83,7 @@ class App extends React.Component {
           render={routeProps => {
             const { noteId } = routeProps.match.params;
             const note = findNote(notes, noteId);
-            return <NotePageMain {...routeProps} note={note} />;
+            return <ShowOneNote {...routeProps} note={note} />;
           }}
         />
       </>
@@ -111,6 +111,6 @@ class App extends React.Component {
 
 export default App;
 
-NoteListNav.defaultProps = {
+ShowFolders.defaultProps = {
   folders: []
 }
