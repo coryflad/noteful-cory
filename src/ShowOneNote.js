@@ -1,11 +1,11 @@
 import React from 'react'
-import Note from './ShowOneNoteDetails'
+import ShowOneNoteDetails from './ShowOneNoteDetails'
 
 export default function ShowOneNote(props) {
   return (
     <section>
       <h2>SHOW ONE NOTE</h2>
-      <Note
+      <ShowOneNoteDetails
         id={props.note.id}
         name={props.note.name}
         modified={props.note.modified}

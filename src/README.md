@@ -3,10 +3,13 @@
 ## Components Structure
 * __Index.js__ (stateless)
     * __App.js__ (statefull)
-        * __Header.js__ (stateless)
-        * __Features.js__ (stateless) - gets the _"features"_ and the _"selected"_ props and _"handleUpdate"_ call back prop from the __App.js__ and the _"featuresDetails"_ object from the __featuresDetails.js__
-            * __FeatureList.js__ (stateless) - gets the _"features"_ and the _"selected"_ props and _"handleUpdate"_ call back prop from the __Features.js__
-                * __Options.js__ (stateless) - gets the _"item"_ and the _"feature"_ and the _"featureClass"_ props and _"handleUpdate"_ call back prop from the __FeatureList.js__
-        * __ShoppingCart.js__ (stateless) - gets the _"selected"_ props from the __App.js__
-            * __Summary.js__ (stateless) - gets the _"selected"_ from the __ShoppingCart.js__
-            * __Total.js__ (stateless) - gets the _"total"_ from the __ShoppingCart.js__
+        * __ShowFolders.js__ (stateless) - gets the _"folders"_ and the _"notes"_ from the __App.js__
+            * __CircleButton.js__ (stateless) - gets the _"className"_  and the _"children"_ from the __ShowFolders.js__
+        * __AddFolder.js__ (stateful) - gets the _"handleSubmit"_ and the _"handleChange"_call back prop from the __App.js__
+        * __ShowNotes.js__ (stateless)  - gets the _"notes"_ from the __App.js__
+            * __ShowOneNote.js__ (stateless) - gets the _"note"_ from the __ShowNotes.js__
+                * __ShowOneNoteDetails.js__ (stateless) - gets the _"id"_ and the _"name"_  and _"modified"_ from the __ShowOneNote.js__
+                * __CircleButton.js__ (stateless) - gets the _"className"_  and the _"children"_ from the __ShowOneNote.js__
+        * __AddNote.js__ (stateful)  - gets the _"handleSubmit"_ and the _"handleChange"_call back prop from the __App.js__
+        * __dummy-store.js__ (stateless) 
+            
