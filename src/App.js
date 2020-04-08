@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import './App.css';
 import ShowFolders from './ShowFolders'
 import AddFolder from './AddFolder'
-import ShowNotes from './ShowNotes'
+import ShowNotesForFolder from './ShowNotesForFolder'
 import ShowOneNote from './ShowOneNote'
 import AddNote from  './AddNote'
 import dummyStore from './dummy-store'
@@ -70,7 +70,7 @@ class App extends React.Component {
                 folderId
               );
               return (
-                <ShowNotes
+                <ShowNotesForFolder
                   {...routeProps}
                   notes={notesForFolder}
                 />
