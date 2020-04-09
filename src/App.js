@@ -7,7 +7,7 @@ import ShowNotesForFolder from './ShowNotesForFolder'
 import ShowOneNote from './ShowOneNote'
 import AddNote from  './AddNote'
 import dummyStore from './dummy-store'
-import { findNote, findFolder, getNotesForFolder } from './notes-helpers'
+import { findNote, getNotesForFolder } from './notes-helpers'
 
 
 class App extends React.Component {
@@ -39,15 +39,7 @@ class App extends React.Component {
             )}
           />
         ))}
-        <Route
-          path="/note/:noteId"
-          render={routeProps => {
-            const { noteId } = routeProps.match.params;
-            const note = findNote(notes, noteId) || {};
-            const folder = findFolder(folders, note.folderId);
-            return <AddFolder {...routeProps} folder={folder} />;
-          }}
-        />
+        <Route path="/note/:noteId"/>
         <Route path="/add-folder" component={AddFolder} />
         <Route path="/add-note" component={AddNote} />
       </>
@@ -89,9 +81,6 @@ class App extends React.Component {
       </>
     );
   }
-
-
-
 
   render() {
     return (
