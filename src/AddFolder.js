@@ -25,6 +25,7 @@ class AddFolder extends React.Component {
             folder_name: name.value
         };
         console.log(folder)
+        console.log(this.state)
     }
 
     render() {
@@ -67,6 +68,7 @@ class AddFolder extends React.Component {
 }
 
 AddFolder.defaultProps = {
+    name: '',
     history: {
         goBack: () => { }
     }

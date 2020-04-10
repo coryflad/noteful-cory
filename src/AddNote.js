@@ -25,6 +25,7 @@ class AddNote extends React.Component {
             note_name: name.value
         };
         console.log(note)
+        console.log(this.state)
     }
 
     render() {
@@ -67,6 +68,7 @@ class AddNote extends React.Component {
 }
 
 AddNote.defaultProps = {
+    name: '',
     history: {
         goBack: () => { }
     }
