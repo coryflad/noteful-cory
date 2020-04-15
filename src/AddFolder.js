@@ -1,10 +1,14 @@
 import React from 'react'
 import CircleButton from './CircleButton'
+import NotefulContext from './NotefulContext'
 import { Link } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
 
 class AddFolder extends React.Component {
+
+    static contextType = NotefulContext
+
     constructor(props) {
         super(props)
         this.state = {
@@ -25,7 +29,31 @@ class AddFolder extends React.Component {
             folder_name: name.value
         };
         console.log(folder)
-        console.log(this.state)
+        // console.log(this.state)
+
+        fetch(config.API_FOLDERS, {
+            method:'POST',
+            body: JSON.stringify(folder),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(error => {
+                    throw error
+                })
+            }
+            return res.json()
+        })
+        .then(data => {
+            name.value = ''
+            this.context.addFolder(data)
+            this.props.history.push('/')
+        })
+        .catch(error => {
+            this.setState({ appErrror: error})
+        })
     }
 
     render() {
