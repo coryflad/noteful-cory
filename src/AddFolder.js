@@ -1,8 +1,8 @@
 import React from 'react'
 import CircleButton from './CircleButton'
 import NotefulContext from './NotefulContext'
-import { Link } from 'react-router-dom'
-import { render } from '@testing-library/react'
+import config from  './config'
+
 
 
 class AddFolder extends React.Component {
@@ -28,7 +28,7 @@ class AddFolder extends React.Component {
         const folder = {
             folder_name: name.value
         };
-        console.log(folder)
+        // console.log(folder)
         // console.log(this.state)
 
         fetch(config.API_FOLDERS, {
