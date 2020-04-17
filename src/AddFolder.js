@@ -9,12 +9,10 @@ class AddFolder extends React.Component {
 
     static contextType = NotefulContext
 
-    constructor(props) {
-        super(props)
-        this.state = {
+   state = {
             name: ''
         }
-    }
+    
 
     handleChange = e => {
         const { name, value } = e.target;

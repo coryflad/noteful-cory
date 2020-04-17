@@ -19,11 +19,8 @@ class ShowFolders extends React.Component {
         <ul >
           {folders.map(folder =>
             <li key={folder.id}>
-              <NavLink
-                to={`/folder/${folder.id}`}
-              >
-                {countNotesForFolder(notes, folder.id)}
-              
+              <NavLink to={`/folder/${folder.id}`}>
+                {countNotesForFolder(notes)}
                 {folder.folder_name}
               </NavLink>
             </li>
