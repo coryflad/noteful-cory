@@ -1,16 +1,23 @@
 import React from 'react'
 import CircleButton from './CircleButton'
-import { Link } from 'react-router-dom'
-import { render } from '@testing-library/react'
+import config from './config'
+import NotefulContext from './NotefulContext'
 
 
 class AddNote extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: ''
-        }
+
+    static contextType = NotefulContext
+
+    state = {
+        name: '',
+        folderId: '',
+        content: '',
     }
+
+    updateFolderID(folderId) {
+        this.setState({ folderId: { value: folderId, touched: true } })
+    }
+
 
     handleChange = e => {
         const { name, value } = e.target;
@@ -20,39 +27,76 @@ class AddNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { name } = e.target;
+        const { name, folderId, content } = e.target;
         const note = {
-            note_name: name.value
+            note_name: name.value,
+            folder_id: folderId.value,
+            content: content.value,
+            // modified: newDate()
         };
-        console.log(note)
-        console.log(this.state)
+
+        fetch(config.API_NOTES, {
+            method: 'POST',
+            body: JSON.stringify(note),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => {
+                        throw error;
+                    });
+                }
+                return res.json();
+            })
+            .then(data => {
+                name.value = '';
+                content.value = '';
+                folderId.value = '';
+                this.context.addNote(data);
+                this.setState({ data });
+                this.props.history.push('/', data);
+            })
     }
 
     render() {
+
+        const folders = this.context.folders
+
         return (
-            <div className='addNote'>
-                <p>ADD NOTE</p>
-                {this.props.note && (
-                    <h3>
-                        Note Name: {this.props.note.name}
-                    </h3>
-                )}
-                <form className="addNoteForm" onSubmit={e => this.handleSubmit(e)}>
-                    <legend><h3>Add Note</h3></legend>
-                    <label htmlFor="name"><h4>Note Name</h4></label>
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <legend>
+                        <h3>Add Note</h3>
+                    </legend>
+                    <label htmlFor='name'>
+                        <h4>Note Name</h4>
+                    </label>
                     <input
-                        type="text"
-                        name="name"
-                        id="name"
+                        type='text'
+                        name='content'
+                        id='content'
+                        defaultValue=''
                         onChange={this.handleChange}
                     />
+                    <select
+                        id='folderId'
+                        name='folderId'
+                        value={this.state.folderId}
+                        onChange={this.handleChange}
+                    >
+                        <option>Select a folder</option>
+                        {folders.map(folder => (<option key={folder.id} value={folder.id}>{folder.folder_name}</option>))}
+                    </select>
                     <button
-                        type="submit"
-                        id="submit-btn"
-                        disabled={this.state.formValid === false}
+                        type='submit'
+                        id='submit-btn'
                     >
                         Submit
-                        </button>
+                </button>
+                    <br />
+
                 </form>
                 <CircleButton
                     tag='button'
@@ -60,7 +104,7 @@ class AddNote extends React.Component {
                     onClick={() => this.props.history.goBack()}
                 >
                     Go Back
-                    </CircleButton>
+                </CircleButton>
             </div>
         )
     }

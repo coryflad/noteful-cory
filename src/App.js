@@ -6,7 +6,6 @@ import AddFolder from './AddFolder'
 import ShowNotesForFolder from './ShowNotesForFolder'
 import ShowOneNote from './ShowOneNote'
 import AddNote from './AddNote'
-import { findNote, getNotesForFolder } from './notes-helpers'
 import config from './config';
 import NotefulContext from './NotefulContext';
 
