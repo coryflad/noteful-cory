@@ -26,8 +26,6 @@ class AddFolder extends React.Component {
         const folder = {
             folder_name: name.value
         };
-        // console.log(folder)
-        // console.log(this.state)
 
         fetch(config.API_FOLDERS, {
             method:'POST',
