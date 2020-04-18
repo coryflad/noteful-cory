@@ -12,16 +12,17 @@ class ShowFolders extends React.Component {
 
     const { folders = [], notes = [] } = this.context
 
-    console.log(this.context)
+    // console.log(this.context)
 
     return (
       <div >
+        <p>SHOW FOLDERS</p>
         <ul >
           {folders.map(folder =>
             <li key={folder.id}>
               <NavLink to={`/folder/${folder.id}`}>
-                {countNotesForFolder(notes)}
-                {folder.folder_name}
+                {countNotesForFolder(notes, folder.id)}
+                {folder.name}
               </NavLink>
             </li>
           )}

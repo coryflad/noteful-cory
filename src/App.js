@@ -28,13 +28,14 @@ class App extends React.Component {
                     return foldersRes.json().then(e => Promise.reject(e));
 
                 return Promise.all([notesRes.json(), foldersRes.json()]);
-            })
+            }) 
             .then(([notes, folders]) => {
                 this.setState({notes, folders});
             })
             .catch(error => {
                 console.error({error});
             });
+            
     }
 
     renderNavRoutes() {
