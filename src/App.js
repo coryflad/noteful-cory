@@ -38,6 +38,12 @@ class App extends React.Component {
             
     }
 
+    handleDeleteNote = noteId => {
+        this.setState({
+            notes: this.state.notes.filter(note => note.id !== noteId)
+        })
+    }
+
     renderNavRoutes() {
         return (
             <>
